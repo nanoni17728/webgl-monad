@@ -7,10 +7,20 @@
   };
 
   outputs = { self, nixpkgs, node2nix }: {
+    project-name = "webgl-monad";
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+    defaultPackage.x86_64-linux =
+      with import nixpkgs { system = "x86_64-linux"; };
+      pkgs.mkShell {
+        name = self.project-name;
+        src = self;
+        nativeBuildInputs = [ pkgs.node2nix pkgs.nodejs ];
 
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+        shellHook = ''
+          if command -v fish > /dev/null
+            then fish
+          fi
+        '';
+      };
   };
 }
