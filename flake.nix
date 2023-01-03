@@ -1,5 +1,5 @@
 {
-  description = "A Clojurescript environment for WebGL";
+  description = "Experimental state management with WebGL";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
