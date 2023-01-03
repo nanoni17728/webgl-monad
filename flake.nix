@@ -14,7 +14,7 @@
       pkgs.mkShell {
         name = self.project-name;
         src = self;
-        nativeBuildInputs = [ pkgs.node2nix pkgs.nodejs ];
+        nativeBuildInputs = [ pkgs.node2nix pkgs.nodejs pkgs.openjdk ];
 
         shellHook = ''
           if command -v fish > /dev/null
